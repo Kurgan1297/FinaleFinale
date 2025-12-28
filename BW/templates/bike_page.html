@@ -1,0 +1,43 @@
+{% extends 'basics.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="bike-info-block">
+        <div class="block-style header-panel">
+            <a href="#main-panel">Про товар</a>
+            <a href="#description">Описание</a>
+            <a href="#reviews">Отзывы</a>
+        </div>
+        <div class="main-panel" id="#main-panel">
+            <div class="block-style left-side">
+            <p><img src="media/images/{{ bike.image_path }}"></p>
+                <!-- <img src="{% static 'images/bikes/' + bike_info.image_path %}"> -->
+                <p>Типа картинка</p>
+            </div>
+            <div class="block-style right-side">
+                <h2>{{ bike_info.name }}</h2>
+                <p>139 отзывов</p>
+
+                <h3>Ціна: {{ bike_info.price }} грн</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ bike_info.id }}" name="pridumal">
+                    <button class="buy-button" type="submit">Добавить в корзину</button>
+                    
+                </form>
+            </div>
+        </div>
+        <div class="footer-panel">
+            <div class="block-style description" id="#description">
+                <h3>Опис товару</h3>
+                <p>{{ bike_info.description }}</p>
+            </div>
+            <div class="block-style reviews" id="#reviews">
+                <h3>Відгуки</h3>
+                <p>Тут будуть відгуки користувачів про цей товар.</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

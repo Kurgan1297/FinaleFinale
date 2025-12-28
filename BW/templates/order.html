@@ -1,0 +1,30 @@
+{% extends 'basics.html' %}
+
+<form method="post">
+
+    <input type="hidden" value="{{ bike_info.id }}" name="pridumal">
+    <button class="buy-button" type="submit">Купити</button>
+    
+</form>
+
+{{ cart }}
+
+{% block content %}
+<form method='POST'>
+    
+    {% csrf_token %}
+
+    <div class="order_card">    
+        Phone number:<p><input type="text" name="phone"></p>
+        Email: <p><input type="email" name="email"></p>
+        Card Number: <p><input type="text" name="card"></p>
+        <input type="checkbox" value="True" name="agreement"> I {{ user.name }} agree to buy this by rights of 
+        <a href="{% url 'about_page' %}">Bike Web service </a><p></p>
+
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+
+
+   {% endblock %}
