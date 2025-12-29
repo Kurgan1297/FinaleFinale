@@ -23,3 +23,7 @@ class BikeInformationForm(Form):
 
 class OrderForm(Form):
     pass
+
+class ReviewForm(Form):
+    review_description = CharField(max_length=1024)
+    review_rating = IntegerField()

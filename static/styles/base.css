@@ -222,3 +222,10 @@ nav {
 .block-style header-panel {
     color:rgba(5, 58, 30, 0.677)
 }
+
+.add-review {
+    background-color: rgba(14, 173, 88, 0.86);
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 8px;
+}

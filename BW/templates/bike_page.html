@@ -36,16 +36,23 @@
             <div class="block-style reviews" id="#reviews">
                 <h3>Відгуки</h3>
                 <p>Тут будуть відгуки користувачів про цей товар.</p>
-                <ul">Рейтинг:
-                    <li>5 зірок</li>
-                    <li>4 зірки</li>
-                    <li>3 зірки</li>
-                    <li>2 зірки</li>
-                    <li>1 зірка</li>
-                </ul>
-                <textarea class="review-textarea"></textarea>
-                <button class="add-review-button">Додати відгук</button>
-            
+            </div>
+            <form>
+                <div class="add-review">
+                    <p><h3>Рейтинг: (у зірках)</h3></p>
+
+                    <input type="radio" name="rating" value="1">1/5</option>
+                    <input type="radio" name="rating" value="2">2/5</option>
+                    <input type="radio" name="rating" value="3">3/5</option>
+                    <input type="radio" name="rating" value="4">4/5</option>
+                    <input type="radio" name="rating" value="5">5/5</option>
+
+                    <p><h3>Опишіть ваш відгук:</p></h3>
+                    <p><input type="text"></p>
+
+                    <button class="add-review-button" type="submit">Додати відгук</button>
+                </div>
+            </form>
                <!--
 
                 {% for review in reviews %}
@@ -61,7 +68,7 @@
 
 
 
-            </div>
+
         </div>
     </div>
 
