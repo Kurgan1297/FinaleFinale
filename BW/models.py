@@ -31,8 +31,9 @@ class Order_items(models.Model):
 class Reviews(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     review_descripton = models.TextField(max_length=1366)
+    mark = models.IntegerField()
     product_review = models.ForeignKey(Bikes, on_delete=models.CASCADE)
-    # date = models.DateField()
+    date = models.DateField()
 
 
 

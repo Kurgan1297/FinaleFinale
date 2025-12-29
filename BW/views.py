@@ -6,7 +6,7 @@ from django.core import paginator
 
 from BW.models import Bikes
 from BW.forms import FilterForm
-from BW.crud import create_Order, add_item_to_order
+from BW.crud import add_review, create_Order, add_item_to_order
 
 class HomeView(View):
     def get(self, request):
@@ -88,7 +88,10 @@ class OrderEndView(View):
     
 
 class CartView(View):
-    def get(self, request, create_Order, add_item_to_order):
+    def get(self, request):
+        return render(request, "cart.html", context={"cart": request.session['cart']})
+
+    def post(self, request, create_Order, add_item_to_order):
         order = create_Order(request.user)
         for item in request.session['cart']:
             product = Bikes.objects.get(id=item["Bikes.id"])
@@ -99,6 +102,22 @@ class CartView(View):
         
         return redirect("cart_page")
 
+class MakeReviewView(View):
+    def get(self, request, bikeid):
+        return render(request, "make_review.html")
 
-    def post(self, request):
-        pass
+    def post(self, request, bikeid):
+        rating = int(request.POST.get("rating")) 
+        review_text = request.POST.get("review_text")
+        user=request.user
+
+        if user.is_authenticated == False:
+            add_review(
+                author=user,
+                review_description=review_text,
+                mark=rating,
+                product_review=Bikes.objects.get(id=bikeid)
+            )
+
+
+        return redirect("bike_page", bikeid=bikeid)

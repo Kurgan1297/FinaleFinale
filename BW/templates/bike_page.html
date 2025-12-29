@@ -11,8 +11,8 @@
         </div>
         <div class="main-panel" id="#main-panel">
             <div class="block-style left-side">
-            <p><img src="media/images/{{ bike.image_path }}"></p>
-                <!-- <img src="{% static 'images/bikes/' + bike_info.image_path %}"> -->
+                 <p><img src="../../media/{{ bike.image_path }}"></p>  
+
                 <p>Типа картинка</p>
             </div>
             <div class="block-style right-side">
@@ -35,9 +35,15 @@
             </div>
             <div class="block-style reviews" id="#reviews">
                 <h3>Відгуки</h3>
-                <p>Тут будуть відгуки користувачів про цей товар.</p>
+                {% for review in bike_reviews %}
+                    <div class="review">
+                        <h4>{{ review.author.username }} - Рейтинг: {{ review.mark }}/5</h4>
+                        <p>{{ review.review_descripton }}</p>   
+                    </div>
+                {% endfor %}
             </div>
-            <form>
+            <form method="post" action="{% url 'make_review' bike.id %}">
+                {% csrf_token %}
                 <div class="add-review">
                     <p><h3>Рейтинг: (у зірках)</h3></p>
 

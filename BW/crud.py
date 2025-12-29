@@ -3,11 +3,13 @@ from BW.models import Reviews, Orders
 import datetime
 
 #                                             
-def add_review(author, review_description, date):
+def add_review(author, review_description, date, mark, product_review):
     new_review = models.Reviews(
         author = author,
         review_description = review_description,
-        date=datetime.datetime.now()
+        mark=mark,
+        date=datetime.datetime.now(),
+        product_review=product_review
 
 
     )

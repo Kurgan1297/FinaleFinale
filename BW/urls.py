@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from django.urls import path
 
 
-from BW.views import HomeView, ShopView, AboutView, DescitptionView, OrderView, OrderEndView, CartView
+from BW.views import HomeView, ShopView, AboutView, DescitptionView, OrderView, OrderEndView, CartView, MakeReviewView
 
 urlpatterns = [
     path('', HomeView.as_view(), name='greetings_page'),
@@ -19,7 +19,8 @@ urlpatterns = [
     path('order/', OrderView.as_view(), name='order_page'),
     path('order_end/', OrderEndView.as_view(), name='order_end_page'),
     
-    path('cart', CartView.as_view(), name='cart_page')
+    path('cart', CartView.as_view(), name='cart_page'),
+    path('make_review/<int:bikeid>', MakeReviewView.as_view(), name='make_review'),
 
     # path('bike/update/<int:bikeid>', UpdateView.as_view(), name='bike_update_page'),
     # path('bike/delete/<int:bikeid>', DeleteView.as_view(), name='bike_delete_page'),
